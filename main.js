@@ -45,6 +45,7 @@ app.on('will-quit', () => {
 
 app.whenReady().then(() => {
     createWindow()
+    ipcMain.on('set-selected', handleSelected)
     const ret = globalShortcut.register('CommandOrControl+X', () => {
       console.log("keyboard press"); 
       if(selected != undefined){
@@ -64,3 +65,4 @@ app.whenReady().then(() => {
   })
 
 //screenshot
+

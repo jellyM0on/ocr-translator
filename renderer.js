@@ -22,3 +22,13 @@ function displaySources(sources){
 const menuSource = document.getElementById('src-btn'); 
 menuSource.onclick = () => displaySources(sources.srcs())
 
+function displaySelected(source){
+    const selected = document.getElementById('selected-window')
+    selected.textContent = `Selected: ${source}`
+  }
+
+function selectSource(source){
+    window.sources.setSelected(JSON.stringify(source)); 
+    displaySelected(source.name)
+  }
+  

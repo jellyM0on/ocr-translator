@@ -13,6 +13,6 @@ ipcRenderer.on('SET_SOURCES', async (event, sources) => {
 
 contextBridge.exposeInMainWorld('sources', {
     srcs: () => { return allSources }, 
-    src: (s) => ipcRenderer.send('SET_SOURCE', s), 
+    setSelected: (s) => ipcRenderer.send('set-selected', s),
     
   })
