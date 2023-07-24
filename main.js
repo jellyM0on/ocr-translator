@@ -1,6 +1,8 @@
 const { app, BrowserWindow, globalShortcut, desktopCapturer, ipcMain, screen } = require('electron')
 let path = require('path')
 
+const { recognize } = require('./process')
+
 let selected; 
 function handleSelected(event, source){
   const webContents = event.sender
@@ -49,7 +51,7 @@ app.whenReady().then(() => {
     const ret = globalShortcut.register('CommandOrControl+X', () => {
       console.log("keyboard press"); 
       if(selected != undefined){
-        // capture(selected)
+        capture(selected)
       }
     })
 
@@ -65,4 +67,23 @@ app.whenReady().then(() => {
   })
 
 //screenshot
-
+async function capture(selected){
+    let image; 
+  
+    const display = screen.getPrimaryDisplay(); 
+    
+    const options = {
+      types: ['window', 'screen'], 
+      thumbnailSize: {width: 800, height: 800}
+    }
+  
+    const sources = await desktopCapturer.getSources(options)
+    .then((sources) => {
+      const source = sources.find(s => s.id == selected.id)
+      image = source.thumbnail.toPNG(); 
+      recognize(image)
+      .then(({text, translated}) => {
+        win.webContents.send('SET_OUTPUT', [text, translated])
+      })
+    })
+}
