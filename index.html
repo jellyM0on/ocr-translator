@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" href="styles.css">
+    <title>jpOCR</title>
+  </head>
+  <body>
+    <h2>Press Command + X to translate<br>Please allow 1-4 seconds for text processing</h2>
+    <p id="selected-window">&nbsp;</p>
+    <button id="src-btn" >Select a window</button>
+  
+    <ul id="src-btn-content"></ul>
+    <div class="content">
+      <p class="text-label">Original Text </p>
+      <p id="beforeText">&nbsp;</p>
+      <p class="text-label">Translated Text </p>
+      <p id="afterText">&nbsp;</p>
+    </div>
+   
+  </body>
+  <script src="renderer.js"> </script>
+</html>
