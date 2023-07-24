@@ -1,7 +1,7 @@
 const { app, BrowserWindow, globalShortcut, desktopCapturer, ipcMain, screen } = require('electron')
 let path = require('path')
 
-const { recognize } = require('./process')
+const { recognize } = require('./js/process')
 
 let selected; 
 function handleSelected(event, source){
@@ -19,7 +19,7 @@ const createWindow = () => {
           nodeIntegration: true,
           contextIsolation: true,
           enableRemoteModule: true,
-          preload: path.join(__dirname, 'preload.js')
+          preload: path.join(__dirname, '/js/preload.js')
 
         }
     })
