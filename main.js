@@ -24,7 +24,11 @@ const createWindow = () => {
   win.loadFile('index.html')
 
   //get sources 
-
+  desktopCapturer.getSources({types: ['window', 'screen' ]})
+  .then(async sources => {
+    win.webContents.send('SET_SOURCES', sources)
+})
+  
 }
 
 
@@ -43,6 +47,9 @@ app.whenReady().then(() => {
     createWindow()
     const ret = globalShortcut.register('CommandOrControl+X', () => {
       console.log("keyboard press"); 
+      if(selected != undefined){
+        // capture(selected)
+      }
     })
 
     if(!ret){
