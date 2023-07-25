@@ -5,7 +5,7 @@ require('dotenv').config();
 
 async function translateText(text){
   try{
-    const response = await fetch(process.env.LIBRETRANSLATE, {
+    const response = await fetch(process.env.TRANSLATION_SERVER, {
       method: "POST",
       body: JSON.stringify({
         q: text,
