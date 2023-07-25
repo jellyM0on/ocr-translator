@@ -4,8 +4,10 @@
 
 <h5>Video Demo:</h5>
 
-<iframe width="420" height="345" src="https://youtube.com/shorts/HSruOH1ZVMo?feature=share">
-</iframe>
+
+
+https://github.com/jellyM0on/ocr-translator/assets/108628237/9208c0b3-114c-4b3b-8e0e-87bd88ab582f
+
 
 
 <p>Note: Low accuracy for graphics heavy sources </p>
